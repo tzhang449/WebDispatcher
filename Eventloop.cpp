@@ -1,6 +1,18 @@
-#include"Eventloop.h"
+#include <poll.h>
 
-Eventloop::Eventloop():
-looping(false){
+#include "Eventloop.h"
 
+Eventloop::Eventloop() : looping(false)
+{
+}
+
+Eventloop::~Eventloop()
+{
+}
+
+void Eventloop::loop()
+{
+    looping = true;
+    ::poll(nullptr, 0, 5 * 1000);
+    looping = false;
 }

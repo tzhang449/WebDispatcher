@@ -1,19 +1,20 @@
 #ifndef _EVENTLOOP_H
 #define _EVENTLOOP_H
 
-#include "atomic.h"
+#include <atomic>
 
 #include "Noncopyable.h"
 
-class Eventloop: Noncopyable{
-public: 
+class Eventloop : Noncopyable
+{
+public:
     Eventloop();
     ~Eventloop();
 
     void loop();
 
 private:
-    atomic<bool> looping;
+    std::atomic<bool> looping;
 };
 
 #endif

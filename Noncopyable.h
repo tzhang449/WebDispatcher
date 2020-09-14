@@ -9,7 +9,7 @@ public:
 
 private:
     Noncopyable(const Noncopyable &) = delete;
-    const Noncopyable &opeartor = (const Noncopyable &) = delete;
+    Noncopyable &operator=(const Noncopyable &) = delete;
 };
 
 #endif
