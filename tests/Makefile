@@ -1,6 +1,6 @@
 vpath %.cpp ..
 CC := g++
-CFLAGS := -g -Wall
+CFLAGS := -g -Wall -std=c++14 -pthread
 
 %.o:%.cpp
 	$(CC) $(CFLAGS) -c $^ -o $@ -I..
@@ -12,4 +12,4 @@ Logger_test:Logger_test.o Logger.o
 .PHONY: clean
 
 clean:
-	rm *.o Logger_test
+	rm Logger_test *.log
