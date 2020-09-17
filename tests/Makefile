@@ -9,6 +9,10 @@ Logger_test:Logger_test.o Logger.o
 	$(CC) $(CFLAGS)  $^ -o $@ -I..
 	rm *.o
 
+Eventloop_test:Eventloop_test.o Eventloop.o Logger.o
+	$(CC) $(CFLAGS)  $^ -o $@ -I..
+	rm *.o
+
 .PHONY: clean
 
 clean:

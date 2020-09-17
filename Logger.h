@@ -3,10 +3,10 @@
 
 #include <vector>
 #include <mutex>
+#include <memory>
 #include <thread>
 #include <condition_variable>
 #include <atomic>
-#include <memory>
 
 #include "Noncopyable.h"
 
@@ -14,8 +14,14 @@ class Logger : Noncopyable
 {
 public:
     Logger();
-
-    void log(const char *level, const char *filename, const char *func, int line, const char *fmt, ...);
+    ~Logger();
+    void log(const char *level,
+             const char *filename,
+             const char *func,
+             int line,
+             bool toAbort,
+             const char *fmt,
+             ...);
 
 private:
     static const int SMALL_BUFFER_SIZE = 512;
@@ -27,9 +33,10 @@ private:
         Appender();
         ~Appender();
         void append(const char *buf, int len);
+        void stop();
 
     private:
-        static const int GIGABYTES = 1024*1024*1024;
+        static const int GIGABYTES = 1024 * 1024 * 1024;
 
         class Buffer : Noncopyable
         {
@@ -71,11 +78,19 @@ private:
     char buf_[SMALL_BUFFER_SIZE];
     char *cur_;
     int size_;
+    bool toAbort_;
 };
 
-#define LOG_ERROR(fmt, ...) \
-    Logger().log("ERROR", __FILE__, __func__, __LINE__, fmt, __VA_ARGS__);
+#define LOG_TRACE(fmt, ...) \
+    Logger().log("TRACE", __FILE__, __func__, __LINE__, false, fmt, __VA_ARGS__);
 #define LOG_INFO(fmt, ...) \
-    Logger().log("INFO", __FILE__, __func__, __LINE__, fmt, __VA_ARGS__);
-
+    Logger().log("INFO", __FILE__, __func__, __LINE__, false, fmt, __VA_ARGS__);
+#define LOG_ERROR(fmt, ...) \
+    Logger().log("ERROR", __FILE__, __func__, __LINE__, false, fmt, _VA_ARGS__);
+#define LOG_SYSERROR \
+    Logger().log("SYSERROR", __FILE__, __func__, __LINE__, false, fmt, _VA_ARGS__);
+#define LOG_FATAL(fmt, ...) \
+    Logger().log("FATAL", __FILE__, __func__, __LINE__, true, fmt, __VA_ARGS__);
+#define LOG_SYSFATAL(fmt, ...) \
+    Logger().log("SYSFATAL", __FILE__, __func__, __LINE__, true, fmt, __VA_ARGS__);
 #endif

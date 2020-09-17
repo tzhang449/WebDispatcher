@@ -18,8 +18,18 @@ Logger::Logger() : buf_(),
 {
 }
 
-void Logger::log(const char *level, const char *filename, const char *func, int line, const char *fmt, ...)
+Logger::~Logger()
 {
+    if (toAbort_)
+    {
+        appender_.stop();
+        ::abort();
+    }
+}
+
+void Logger::log(const char *level, const char *filename, const char *func, int line, bool toAbort, const char *fmt, ...)
+{
+    toAbort_ = toAbort;
     gen_prefix(level);
 
     va_list args;
@@ -46,13 +56,13 @@ void Logger::gen_prefix(const char *level)
     char tmbuf[64];
     int ret;
 
-    gettimeofday(&tv, nullptr);
+    ::gettimeofday(&tv, nullptr);
     nowtime = tv.tv_sec;
-    nowtm = localtime(&nowtime);
-    strftime(tmbuf, sizeof(tmbuf), "%Y-%m-%d %H:%M:%S", nowtm);
+    nowtm = ::localtime(&nowtime);
+    ::strftime(tmbuf, sizeof(tmbuf), "%Y-%m-%d %H:%M:%S", nowtm);
     if (threadID == 0)
     {
-        threadID = syscall(SYS_gettid);
+        threadID = ::syscall(SYS_gettid);
     }
     ret = ::snprintf(cur_, size_, "%s.%06ld %d [%s] \"", tmbuf, tv.tv_usec, threadID, level);
     assert(ret < size_);
@@ -81,9 +91,7 @@ Logger::Appender::Appender() : buffer_(std::make_unique<Buffer>()),
 
 Logger::Appender::~Appender()
 {
-    running_ = false;
-    if (thread_.joinable())
-        thread_.join();
+    stop();
 }
 
 void Logger::Appender::append(const char *buf, int size)
@@ -96,6 +104,13 @@ void Logger::Appender::append(const char *buf, int size)
         buffer_->add(buf, size);
         cond_.notify_all();
     }
+}
+
+void Logger::Appender::stop()
+{
+    running_ = false;
+    if (thread_.joinable())
+        thread_.join();
 }
 
 void Logger::Appender::threadFunc()
@@ -134,10 +149,10 @@ void Logger::Appender::fileWrite(const char *buf, int len)
     int num;
     int numToWrite = len;
 
-    while ((num = ::write(fd_, buf, len)) && (num == -1 || num < numToWrite))
+    while (numToWrite > 0 && (num = ::write(fd_, buf, numToWrite)))
     {
-        if (num != -1)
-            numToWrite -= num;
+        assert(num != -1);
+        numToWrite -= num;
     }
     fileSize_ += len;
 }

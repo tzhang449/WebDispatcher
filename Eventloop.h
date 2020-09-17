@@ -15,6 +15,8 @@ public:
 
 private:
     std::atomic<bool> looping;
+
+    std::unique_ptr<Epoller> epoller_;
 };
 
 #endif
