@@ -15,6 +15,10 @@ Channel::Channel(Eventloop *loop, int fd) : loop_(loop),
 {
 }
 
+Channel::~Channel()
+{
+}
+
 void Channel::handleEvent()
 {
     LOG_TRACE("Channel: %s", eventsToStr(fd_, revents_).c_str());
@@ -35,7 +39,7 @@ void Channel::handleEvent()
     }
     if (revents_ & (EPOLLOUT))
     {
-        if(writeCb_)
+        if (writeCb_)
             writeCb_();
     }
 }

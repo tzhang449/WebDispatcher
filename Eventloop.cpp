@@ -23,7 +23,7 @@ void Eventloop::loop()
 
     LOG_TRACE("Eventloop %p start looping", this);
 
-    while (!quit)
+    while (!quit_)
     {
         actives_.clear();
         epoller_->poll(EpollTimeOutMs, &actives_);

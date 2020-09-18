@@ -9,11 +9,15 @@ Logger_test:Logger_test.o Logger.o
 	$(CC) $(CFLAGS)  $^ -o $@ -I..
 	rm *.o
 
-Eventloop_test:Eventloop_test.o Eventloop.o Logger.o
+Eventloop_test:Eventloop_test.o Eventloop.o Channel.o Epoller.o Logger.o 
 	$(CC) $(CFLAGS)  $^ -o $@ -I..
 	rm *.o
 
-.PHONY: clean
+.PHONY: clean 
+.PHONY: cleanlog
 
 clean:
-	rm Logger_test Eventloop_test *.log
+	rm Logger_test Eventloop_test *.o *.log
+
+cleanlog:
+	rm *.log

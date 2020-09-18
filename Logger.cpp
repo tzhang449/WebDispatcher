@@ -127,6 +127,8 @@ void Logger::Appender::threadFunc()
                 cond_.wait_for(guard,
                                std::chrono::microseconds(1000));
             }
+            buffers_.push_back(std::move(buffer_));
+            buffer_ = std::make_unique<Buffer>();
             buffersToWrite.swap(buffers_);
         }
         writeToFile(buffersToWrite);

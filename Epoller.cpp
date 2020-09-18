@@ -104,18 +104,18 @@ void Epoller::update(int op, Channel *channel)
     struct epoll_event ev;
     ev.events = channel->events();
     ev.data.ptr = channel;
-    LOG_TRACE("Epoll: epoll_ctl op=%s event={%s}",
+    LOG_TRACE("Epoller: epoll_ctl op=%s event={%s}",
               opToStr(op),
               channel->eventsToStr(channel->fd(), channel->events()).c_str());
     if (::epoll_ctl(epollfd_, op, channel->fd(), &ev) < 0)
     {
         if (op == EPOLL_CTL_DEL)
         {
-            LOG_SYSERROR("Epoll: epoll_ctl op=%s fd=%d", opToStr(op), channel->fd());
+            LOG_SYSERROR("Epoller: epoll_ctl op=%s fd=%d", opToStr(op), channel->fd());
         }
         else
         {
-            LOG_SYSFATAL("Epoll: epoll_ctl op=%s fd=%d", opToStr(op), channel->fd());
+            LOG_SYSFATAL("Epoller: epoll_ctl op=%s fd=%d", opToStr(op), channel->fd());
         }
     }
 }

@@ -9,6 +9,7 @@
 #include "Noncopyable.h"
 
 class Channel;
+class Eventloop;
 
 class Epoller : Noncopyable
 {
