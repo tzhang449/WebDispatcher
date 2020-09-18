@@ -6,8 +6,8 @@
 #include "Logger.h"
 #include "Epoller.h"
 #include "Eventloop.h"
-
-Epoller::Epoller(Eventloop *loop) : ownerLoop_(loop),
+#include "Channel.h"
+Epoller::Epoller(Eventloop *loop) : loop_(loop),
                                     epollfd_(::epoll_create1(EPOLL_CLOEXEC)),
                                     events_(InitEventListSize)
 {
@@ -35,15 +35,104 @@ void Epoller::poll(int timeoutMs, ChannelList *active)
     {
         LOG_TRACE("Epoller: %d events available", numEvents);
         fillActive(numEvents, active);
-    } else if(numEvents ==0){
-        LOG_TRACE("%s","Epoller: no active events");
-    } else{
-        if(savedErrno != EINTR){
-            LOG_FATAL("Epoller: %s",strerror(savedErrno));
+    }
+    else if (numEvents == 0)
+    {
+        LOG_TRACE("%s", "Epoller: no active events");
+    }
+    else
+    {
+        if (savedErrno != EINTR)
+        {
+            LOG_FATAL("Epoller: %s", strerror(savedErrno));
         }
     }
 }
 
-void Epoller::fillActive(int numEvents, ChannelList *active){
-    //to do
+void Epoller::updateChannel(Channel *channel)
+{
+    LOG_TRACE("Epoller: fd=%d events=%d index=%d",
+              channel->fd(),
+              channel->events(),
+              channel->index());
+    switch (channel->index())
+    {
+    case NEW:
+    case DELETED:
+        update(EPOLL_CTL_ADD, channel);
+        channel->setIndex(ADDED);
+        break;
+    case ADDED:
+        if (channel->events() == Channel::NOEVENT)
+        {
+            update(EPOLL_CTL_DEL, channel);
+            channel->setIndex(DELETED);
+        }
+        else
+        {
+            update(EPOLL_CTL_MOD, channel);
+        }
+        break;
+    default:
+        LOG_FATAL("%s", "Epoller: channel with invalid index");
+        break;
+    }
+}
+
+void Epoller::removeChannel(Channel *channel)
+{
+    LOG_TRACE("Epoller: fd=%d index=%d", channel->fd(), channel->index());
+    if (channel->index() == ADDED)
+    {
+        update(EPOLL_CTL_DEL, channel);
+    }
+    channel->setIndex(NEW);
+}
+
+void Epoller::fillActive(int numEvents, ChannelList *active)
+{
+    for (int i = 0; i < numEvents; i++)
+    {
+        Channel *channel = static_cast<Channel *>(events_[i].data.ptr);
+        channel->setRevents(events_[i].events);
+        active->push_back(channel);
+    }
+}
+
+void Epoller::update(int op, Channel *channel)
+{
+    struct epoll_event ev;
+    ev.events = channel->events();
+    ev.data.ptr = channel;
+    LOG_TRACE("Epoll: epoll_ctl op=%s event={%s}",
+              opToStr(op),
+              channel->eventsToStr(channel->fd(), channel->events()).c_str());
+    if (::epoll_ctl(epollfd_, op, channel->fd(), &ev) < 0)
+    {
+        if (op == EPOLL_CTL_DEL)
+        {
+            LOG_SYSERROR("Epoll: epoll_ctl op=%s fd=%d", opToStr(op), channel->fd());
+        }
+        else
+        {
+            LOG_SYSFATAL("Epoll: epoll_ctl op=%s fd=%d", opToStr(op), channel->fd());
+        }
+    }
+}
+
+const char *Epoller::opToStr(int op)
+{
+    switch (op)
+    {
+    case EPOLL_CTL_ADD:
+        return "ADD";
+    case EPOLL_CTL_DEL:
+        return "DEL";
+    case EPOLL_CTL_MOD:
+        return "MOD";
+    default:
+        break;
+    }
+    //should not reach here
+    return "UNKNOWN";
 }

@@ -3,6 +3,8 @@
 
 #include "Eventloop.h"
 
+//This test tests the behavior of Eventloop, Channel and Epoller
+
 void threadFunc(){
     printf("threadFunc started");
     
@@ -20,4 +22,5 @@ int main(){
     loop.loop();
 
     thrd.join();   
+    loop.quit();
 }

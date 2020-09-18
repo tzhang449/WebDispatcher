@@ -1,28 +1,48 @@
 #ifndef _EPOLLER_H
 #define _EPOLLER_H
 
+#include "sys/epoll.h"
+
 #include <map>
 #include <memory>
 
 #include "Noncopyable.h"
 
+class Channel;
+
 class Epoller : Noncopyable
 {
 public:
-    typedef std::vector<Channel*> ChannelList;
+    //Mark for the state of the Channel (Channel.index_)
+    typedef std::vector<Channel *> ChannelList;
 
     Epoller(Eventloop *loop);
     ~Epoller();
 
     void poll(int timeoutMs, ChannelList *active);
 
+    void updateChannel(Channel *channel);
+
+    void removeChannel(Channel *channel);
+
+    enum
+    {
+        NEW,
+        ADDED,
+        DELETED
+    };
+
 private:
+    //Initial Eventlist size
     static const int InitEventListSize = 1000;
 
     void fillActive(int numEvents, ChannelList *active);
 
-    Eventloop &ownerLoop_;
-    std::map<int, Channel*> channels_;
+    void update(int op, Channel *channel);
+
+    const char *opToStr(int op);
+
+    Eventloop *loop_;
 
     int epollfd_;
     std::vector<epoll_event> events_;

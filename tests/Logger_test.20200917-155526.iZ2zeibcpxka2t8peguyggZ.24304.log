@@ -1,8 +1,0 @@
-2020-09-17 15:55:26.011447 24311 [FATAL] "fatal test" - Logger_test.cpp(threadFunc):14
-2020-09-17 15:55:26.011526 24312 [FATAL] "fatal test" - Logger_test.cpp(threadFunc):14
-2020-09-17 15:55:26.011550 24310 [FATAL] "fatal test" - Logger_test.cpp(threadFunc):14
-2020-09-17 15:55:26.011566 24313 [FATAL] "fatal test" - Logger_test.cpp(threadFunc):14
-2020-09-17 15:55:26.011584 24309 [FATAL] "fatal test" - Logger_test.cpp(threadFunc):14
-2020-09-17 15:55:26.011599 24308 [FATAL] "fatal test" - Logger_test.cpp(threadFunc):14
-2020-09-17 15:55:26.011621 24307 [FATAL] "fatal test" - Logger_test.cpp(threadFunc):14
-2020-09-17 15:55:26.011637 24306 [FATAL] "fatal test" - Logger_test.cpp(threadFunc):14

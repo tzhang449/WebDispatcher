@@ -16,4 +16,4 @@ Eventloop_test:Eventloop_test.o Eventloop.o Logger.o
 .PHONY: clean
 
 clean:
-	rm Logger_test *.log
+	rm Logger_test Eventloop_test *.log

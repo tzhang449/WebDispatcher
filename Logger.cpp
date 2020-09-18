@@ -14,7 +14,8 @@
 
 Logger::Logger() : buf_(),
                    cur_(buf_),
-                   size_(SMALL_BUFFER_SIZE)
+                   size_(SMALL_BUFFER_SIZE),
+                   toAbort_(false)
 {
 }
 

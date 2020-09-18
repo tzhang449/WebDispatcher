@@ -86,9 +86,9 @@ private:
 #define LOG_INFO(fmt, ...) \
     Logger().log("INFO", __FILE__, __func__, __LINE__, false, fmt, __VA_ARGS__);
 #define LOG_ERROR(fmt, ...) \
-    Logger().log("ERROR", __FILE__, __func__, __LINE__, false, fmt, _VA_ARGS__);
-#define LOG_SYSERROR \
-    Logger().log("SYSERROR", __FILE__, __func__, __LINE__, false, fmt, _VA_ARGS__);
+    Logger().log("ERROR", __FILE__, __func__, __LINE__, false, fmt, __VA_ARGS__);
+#define LOG_SYSERROR(fmt, ...) \
+    Logger().log("SYSERROR", __FILE__, __func__, __LINE__, false, fmt, __VA_ARGS__);
 #define LOG_FATAL(fmt, ...) \
     Logger().log("FATAL", __FILE__, __func__, __LINE__, true, fmt, __VA_ARGS__);
 #define LOG_SYSFATAL(fmt, ...) \
