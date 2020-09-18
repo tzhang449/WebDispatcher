@@ -41,6 +41,8 @@ Acceptor::Acceptor(Eventloop *loop,
         LOG_SYSFATAL("%s", "Acceptor: socket bind failed");
     }
 
+    LOG_TRACE("Acceptor: create socket on port %d", port);
+
     channel_.setReadCb(std::bind(&Acceptor::onRead, this));
 }
 
@@ -52,6 +54,8 @@ void Acceptor::listen()
     {
         LOG_SYSFATAL("%s", "Acceptor: listen on socket failed");
     }
+
+    LOG_TRACE("%s", "Acceptor: start listening");
 
     channel_.enableRead();
 }
@@ -118,7 +122,7 @@ void Acceptor::onRead()
                                 &addr.sin_addr,
                                 buf,
                                 static_cast<socklen_t>(sizeof(buf))),
-                      addr.sin_port);
+                      ntohs(addr.sin_port));
             connections.push_back({connfd, addr});
         }
     }

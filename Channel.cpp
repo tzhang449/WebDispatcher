@@ -21,7 +21,7 @@ Channel::~Channel()
 
 void Channel::handleEvent()
 {
-    LOG_TRACE("Channel: %s", eventsToStr(fd_, revents_).c_str());
+    LOG_TRACE("Channel: event = {%s}", eventsToStr(fd_, revents_).c_str());
     if ((revents_ & EPOLLHUP && !(revents_ & EPOLLIN)))
     {
         if (closeCb_)
@@ -116,6 +116,8 @@ std::string Channel::eventsToStr(int fd, int events)
 {
     std::stringstream oss;
     oss << fd << ": ";
+    if (events & EPOLLET)
+        oss << "ET ";
     if (events & EPOLLIN)
         oss << "IN ";
     if (events & EPOLLPRI)

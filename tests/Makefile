@@ -13,6 +13,9 @@ Eventloop_test:Eventloop_test.o Eventloop.o Channel.o Epoller.o Logger.o
 	$(CC) $(CFLAGS)  $^ -o $@ -I..
 	rm *.o
 
+Acceptor_test:Acceptor_test.o Eventloop.o Channel.o Epoller.o Acceptor.o Logger.o
+	$(CC) $(CFLAGS)  $^ -o $@ -I..
+	rm *.o
 .PHONY: clean 
 .PHONY: cleanlog
 

@@ -73,7 +73,7 @@ void Logger::gen_prefix(const char *level)
 
 void Logger::gen_suffix(const char *filename, const char *func, int line)
 {
-    int ret = ::snprintf(cur_, size_, "\" - %s(%s):%d\n", filename, func, line);
+    int ret = ::snprintf(cur_, size_, "\" - %s(%s):%d \n", filename, func, line);
     assert(ret < size_);
     size_ -= ret;
     cur_ += ret;

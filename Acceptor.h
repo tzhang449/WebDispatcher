@@ -10,6 +10,7 @@ class Eventloop;
 
 class Acceptor
 {
+public:
     typedef std::function<void(int, struct sockaddr_in)> ConnCb;
 
     Acceptor(Eventloop *loop, unsigned short port, ConnCb cb);

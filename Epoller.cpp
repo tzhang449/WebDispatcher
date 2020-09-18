@@ -7,6 +7,7 @@
 #include "Epoller.h"
 #include "Eventloop.h"
 #include "Channel.h"
+
 Epoller::Epoller(Eventloop *loop) : loop_(loop),
                                     epollfd_(::epoll_create1(EPOLL_CLOEXEC)),
                                     events_(InitEventListSize)
@@ -51,9 +52,8 @@ void Epoller::poll(int timeoutMs, ChannelList *active)
 
 void Epoller::updateChannel(Channel *channel)
 {
-    LOG_TRACE("Epoller: fd=%d events=%d index=%d",
-              channel->fd(),
-              channel->events(),
+    LOG_TRACE("Epoller: event={%s} index=%d",
+              channel->eventsToStr(channel->fd(), channel->events()).c_str(),
               channel->index());
     switch (channel->index())
     {
