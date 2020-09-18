@@ -41,8 +41,8 @@ public:
     std::string eventsToStr(int fd, int events);
 
     static const int NOEVENT = 0;
-    static const int READEVENT = EPOLLIN | EPOLLPRI;
-    static const int WRITEEVENT = EPOLLOUT;
+    static const int READEVENT = EPOLLIN | EPOLLPRI | EPOLLET;
+    static const int WRITEEVENT = EPOLLOUT | EPOLLET;
 
 private:
     void update();

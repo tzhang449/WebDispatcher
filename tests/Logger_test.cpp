@@ -7,11 +7,10 @@
 
 //This test is not for the benchmark.
 const int thread_num=8;
-const int size=100;
+const int size=1000000;
 const int total=thread_num*size;
 
 void threadFunc(){
-    LOG_FATAL("%s","fatal test");
     for(int i=0;i<size;i++){
         LOG_INFO("This thread writes a message for the %d time",i);
     }

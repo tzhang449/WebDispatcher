@@ -11,7 +11,8 @@
 #include "Logger.h"
 #include "Channel.h"
 
-//This test tests the behavior of the main reactor
+//This test tests the behavior of the main reactor 
+// on an echo server
 
 void onRead(int listenfd)
 {

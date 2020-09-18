@@ -14,7 +14,6 @@ class Eventloop;
 class Epoller : Noncopyable
 {
 public:
-    //Mark for the state of the Channel (Channel.index_)
     typedef std::vector<Channel *> ChannelList;
 
     Epoller(Eventloop *loop);
@@ -26,6 +25,7 @@ public:
 
     void removeChannel(Channel *channel);
 
+    //possible state of the channel. stored in channel.index_
     enum
     {
         NEW,
@@ -34,7 +34,7 @@ public:
     };
 
 private:
-    //Initial Eventlist size
+    //initial Eventlist size
     static const int InitEventListSize = 1000;
 
     void fillActive(int numEvents, ChannelList *active);
