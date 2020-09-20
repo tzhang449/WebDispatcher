@@ -1,4 +1,5 @@
 #include <netinet/in.h>
+#include <netinet/tcp.h>
 #include <arpa/inet.h>
 #include <unistd.h>
 #include <fcntl.h>
@@ -24,8 +25,9 @@ Acceptor::Acceptor(Eventloop *loop,
         LOG_SYSFATAL("%s", "Acceptor: create socket failed");
     }
 
-    setSockOpt(SO_REUSEADDR);
-    setSockOpt(SO_REUSEPORT);
+    //bind
+    setSockOpt(SOL_SOCKET, SO_REUSEADDR);
+    setSockOpt(SOL_SOCKET, SO_REUSEPORT);
 
     struct sockaddr_in servaddr;
     servaddr.sin_family = AF_INET;
@@ -116,6 +118,9 @@ void Acceptor::onRead()
         }
         else
         {
+            //TCP NoDelay
+            setSockOpt(IPPROTO_TCP, TCP_NODELAY);
+
             char buf[20];
             LOG_TRACE("Acceptor: connection from %s, port %d",
                       inet_ntop(AF_INET,
@@ -145,11 +150,11 @@ void Acceptor::onRead()
     }
 }
 
-void Acceptor::setSockOpt(int op)
+void Acceptor::setSockOpt(int level, int op)
 {
     int optval = 1;
     int ret = ::setsockopt(listenfd_,
-                           SOL_SOCKET, op,
+                           level, op,
                            &optval,
                            static_cast<socklen_t>(sizeof optval));
     if (ret < 0)

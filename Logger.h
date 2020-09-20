@@ -70,7 +70,12 @@ private:
         int fd_;
         int fileSize_;
     };
-    static Appender appender_;
+
+    static Appender &getAppender()
+    {
+        static Appender appender_;
+        return appender_;
+    }
 
     inline void gen_prefix(const char *level);
     inline void gen_suffix(const char *filename, const char *func, int line);

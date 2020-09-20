@@ -19,7 +19,7 @@ public:
 
 private:
     void onRead();
-    void setSockOpt(int op);
+    void setSockOpt(int level, int op);
 
     Eventloop *loop_;
     int listenfd_;

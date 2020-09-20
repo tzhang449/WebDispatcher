@@ -8,7 +8,6 @@
 #include <cstdio>
 #include <ctime>
 #include <cstring>
-#include <memory>
 
 #include "Logger.h"
 
@@ -23,7 +22,7 @@ Logger::~Logger()
 {
     if (toAbort_)
     {
-        appender_.stop();
+        getAppender().stop();
         ::abort();
     }
 }
@@ -44,7 +43,7 @@ void Logger::log(const char *level, const char *filename, const char *func, int 
 
     gen_suffix(filename, func, line);
 
-    appender_.append(buf_, SMALL_BUFFER_SIZE - size_);
+    getAppender().append(buf_, SMALL_BUFFER_SIZE - size_);
 }
 
 void Logger::gen_prefix(const char *level)
@@ -84,7 +83,7 @@ Logger::Appender::Appender() : buffer_(std::make_unique<Buffer>()),
                                mutex_(),
                                cond_(),
                                running_(true),
-                               thread_(std::thread(&Logger::Appender::threadFunc, this)),
+                               thread_(&Logger::Appender::threadFunc, this),
                                fd_(),
                                fileSize_()
 {
@@ -198,8 +197,6 @@ const char *Logger::Appender::nextFileName()
     ::snprintf(name, sizeof(name), "%s.%s.%s.%d.log", __progname, tmbuf, hostname, threadID);
     return name;
 }
-
-Logger::Appender Logger::appender_;
 
 Logger::Appender::Buffer::Buffer() : buf_(),
                                      cur_(buf_),
