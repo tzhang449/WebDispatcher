@@ -1,0 +1,26 @@
+2020-09-20 21:38:06.067847 31720 [TRACE] "Ignore SIGPIPE" - ../Eventloop.cpp(IgnoreSigPipe):24 
+2020-09-20 21:38:06.068575 31720 [TRACE] "Epoller: epoll_ctl op=ADD event={4: ET IN PRI }" - ../Epoller.cpp(update):105 
+2020-09-20 21:38:06.068617 31720 [TRACE] "Acceptor: create socket on port 1984" - ../Acceptor.cpp(Acceptor):46 
+2020-09-20 21:38:06.068627 31720 [TRACE] "Server: server starting" - ../Server.cpp(start):22 
+2020-09-20 21:38:06.068946 31722 [TRACE] "ThreadPool: creating 4 threads" - ../ThreadPool.cpp(start):23 
+2020-09-20 21:38:06.068998 31722 [TRACE] "Epoller: epoll_ctl op=ADD event={8: ET IN PRI }" - ../Epoller.cpp(update):105 
+2020-09-20 21:38:06.069071 31722 [TRACE] "Epoller: epoll_ctl op=ADD event={10: ET IN PRI }" - ../Epoller.cpp(update):105 
+2020-09-20 21:38:06.069139 31722 [TRACE] "Epoller: epoll_ctl op=ADD event={12: ET IN PRI }" - ../Epoller.cpp(update):105 
+2020-09-20 21:38:06.069206 31722 [TRACE] "Epoller: epoll_ctl op=ADD event={14: ET IN PRI }" - ../Epoller.cpp(update):105 
+2020-09-20 21:38:06.069257 31722 [TRACE] "Acceptor: start listening" - ../Acceptor.cpp(listen):60 
+2020-09-20 21:38:06.069267 31722 [TRACE] "Epoller: epoll_ctl op=ADD event={5: ET IN PRI }" - ../Epoller.cpp(update):105 
+2020-09-20 21:38:06.069272 31722 [TRACE] "Eventloop 0x7fff90683ad8 start looping" - ../Eventloop.cpp(loop):62 
+2020-09-20 21:38:06.069276 31722 [TRACE] "Epoller: fd total count 1000" - ../Epoller.cpp(poll):26 
+2020-09-20 21:38:06.069297 31726 [TRACE] "LoopThread 31726 started" - ../LoopThread.cpp(threadFunc):37 
+2020-09-20 21:38:06.069321 31726 [TRACE] "Eventloop 0x7f508000a168 start looping" - ../Eventloop.cpp(loop):62 
+2020-09-20 21:38:06.069325 31726 [TRACE] "Epoller: fd total count 1000" - ../Epoller.cpp(poll):26 
+2020-09-20 21:38:06.069332 31725 [TRACE] "LoopThread 31725 started" - ../LoopThread.cpp(threadFunc):37 
+2020-09-20 21:38:06.069349 31725 [TRACE] "Eventloop 0x7f5080006f48 start looping" - ../Eventloop.cpp(loop):62 
+2020-09-20 21:38:06.069352 31725 [TRACE] "Epoller: fd total count 1000" - ../Epoller.cpp(poll):26 
+2020-09-20 21:38:06.069359 31724 [TRACE] "LoopThread 31724 started" - ../LoopThread.cpp(threadFunc):37 
+2020-09-20 21:38:06.069372 31724 [TRACE] "Eventloop 0x7f5080003d48 start looping" - ../Eventloop.cpp(loop):62 
+2020-09-20 21:38:06.069376 31724 [TRACE] "Epoller: fd total count 1000" - ../Epoller.cpp(poll):26 
+2020-09-20 21:38:06.069382 31723 [TRACE] "LoopThread 31723 started" - ../LoopThread.cpp(threadFunc):37 
+2020-09-20 21:38:06.069398 31723 [TRACE] "Eventloop 0x7f5080000b28 start looping" - ../Eventloop.cpp(loop):62 
+2020-09-20 21:38:06.069401 31723 [TRACE] "Epoller: fd total count 1000" - ../Epoller.cpp(poll):26 
+2020-09-20 21:38:10.827510 31720 [TRACE] "Server: server stopping" - ../Server.cpp(stop):29 

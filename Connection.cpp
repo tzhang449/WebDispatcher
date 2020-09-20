@@ -9,14 +9,18 @@ Connection::Connection(Eventloop *loop, int fd) : fd_(fd),
                                                   loop_(loop),
                                                   channel_(loop, fd)
 {
-    channel_.setReadCb(std::bind(&Connection::handleRead, shared_from_this()));
-    channel_.enableRead();
 }
 
 Connection::~Connection()
 {
     LOG_TRACE("Connection: close fd=%d", fd_);
     ::close(fd_);
+}
+
+void Connection::init()
+{
+    channel_.setReadCb(std::bind(&Connection::handleRead, shared_from_this()));
+    channel_.enableRead();
 }
 
 void Connection::handleRead()
@@ -38,4 +42,5 @@ void Connection::close()
     LOG_TRACE("Connection: conn closed with fd=%d", fd_);
     std::shared_ptr<Connection> guard = shared_from_this();
     channel_.disableAll();
+    channel_.removeAllCb();
 }

@@ -27,6 +27,8 @@ public:
     void enableWrite();
     void disableAll();
 
+    void removeAllCb();
+
     void setRevents(int revents);
 
     void handleEvent();

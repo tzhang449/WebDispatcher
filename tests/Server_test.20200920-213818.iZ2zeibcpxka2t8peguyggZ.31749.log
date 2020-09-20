@@ -1,0 +1,103 @@
+2020-09-20 21:38:18.492081 31749 [TRACE] "Ignore SIGPIPE" - ../Eventloop.cpp(IgnoreSigPipe):24 
+2020-09-20 21:38:18.492862 31749 [TRACE] "Epoller: epoll_ctl op=ADD event={4: ET IN PRI }" - ../Epoller.cpp(update):105 
+2020-09-20 21:38:18.492901 31749 [TRACE] "Acceptor: create socket on port 1984" - ../Acceptor.cpp(Acceptor):46 
+2020-09-20 21:38:18.492911 31749 [TRACE] "Server: server starting" - ../Server.cpp(start):22 
+2020-09-20 21:38:18.492979 31751 [TRACE] "ThreadPool: creating 4 threads" - ../ThreadPool.cpp(start):23 
+2020-09-20 21:38:18.493027 31751 [TRACE] "Epoller: epoll_ctl op=ADD event={8: ET IN PRI }" - ../Epoller.cpp(update):105 
+2020-09-20 21:38:18.493100 31751 [TRACE] "Epoller: epoll_ctl op=ADD event={10: ET IN PRI }" - ../Epoller.cpp(update):105 
+2020-09-20 21:38:18.493168 31751 [TRACE] "Epoller: epoll_ctl op=ADD event={12: ET IN PRI }" - ../Epoller.cpp(update):105 
+2020-09-20 21:38:18.493232 31751 [TRACE] "Epoller: epoll_ctl op=ADD event={14: ET IN PRI }" - ../Epoller.cpp(update):105 
+2020-09-20 21:38:18.493279 31751 [TRACE] "Acceptor: start listening" - ../Acceptor.cpp(listen):60 
+2020-09-20 21:38:18.493288 31751 [TRACE] "Epoller: epoll_ctl op=ADD event={5: ET IN PRI }" - ../Epoller.cpp(update):105 
+2020-09-20 21:38:18.493293 31751 [TRACE] "Eventloop 0x7ffef1f74958 start looping" - ../Eventloop.cpp(loop):62 
+2020-09-20 21:38:18.493297 31751 [TRACE] "Epoller: fd total count 1000" - ../Epoller.cpp(poll):26 
+2020-09-20 21:38:18.493317 31755 [TRACE] "LoopThread 31755 started" - ../LoopThread.cpp(threadFunc):37 
+2020-09-20 21:38:18.493338 31755 [TRACE] "Eventloop 0x7f50cc00a168 start looping" - ../Eventloop.cpp(loop):62 
+2020-09-20 21:38:18.493342 31755 [TRACE] "Epoller: fd total count 1000" - ../Epoller.cpp(poll):26 
+2020-09-20 21:38:18.493350 31754 [TRACE] "LoopThread 31754 started" - ../LoopThread.cpp(threadFunc):37 
+2020-09-20 21:38:18.493364 31754 [TRACE] "Eventloop 0x7f50cc006f48 start looping" - ../Eventloop.cpp(loop):62 
+2020-09-20 21:38:18.493368 31754 [TRACE] "Epoller: fd total count 1000" - ../Epoller.cpp(poll):26 
+2020-09-20 21:38:18.493375 31753 [TRACE] "LoopThread 31753 started" - ../LoopThread.cpp(threadFunc):37 
+2020-09-20 21:38:18.493392 31753 [TRACE] "Eventloop 0x7f50cc003d48 start looping" - ../Eventloop.cpp(loop):62 
+2020-09-20 21:38:18.493396 31753 [TRACE] "Epoller: fd total count 1000" - ../Epoller.cpp(poll):26 
+2020-09-20 21:38:18.493402 31752 [TRACE] "LoopThread 31752 started" - ../LoopThread.cpp(threadFunc):37 
+2020-09-20 21:38:18.493416 31752 [TRACE] "Eventloop 0x7f50cc000b28 start looping" - ../Eventloop.cpp(loop):62 
+2020-09-20 21:38:18.493420 31752 [TRACE] "Epoller: fd total count 1000" - ../Epoller.cpp(poll):26 
+2020-09-20 21:39:58.590655 31751 [TRACE] "Epoller: no active events" - ../Epoller.cpp(poll):42 
+2020-09-20 21:39:58.590706 31751 [TRACE] "Epoller: fd total count 1000" - ../Epoller.cpp(poll):26 
+2020-09-20 21:39:58.590722 31755 [TRACE] "Epoller: no active events" - ../Epoller.cpp(poll):42 
+2020-09-20 21:39:58.590729 31755 [TRACE] "Epoller: fd total count 1000" - ../Epoller.cpp(poll):26 
+2020-09-20 21:39:58.590738 31754 [TRACE] "Epoller: no active events" - ../Epoller.cpp(poll):42 
+2020-09-20 21:39:58.590744 31754 [TRACE] "Epoller: fd total count 1000" - ../Epoller.cpp(poll):26 
+2020-09-20 21:39:58.590754 31753 [TRACE] "Epoller: no active events" - ../Epoller.cpp(poll):42 
+2020-09-20 21:39:58.590765 31753 [TRACE] "Epoller: fd total count 1000" - ../Epoller.cpp(poll):26 
+2020-09-20 21:39:58.590779 31752 [TRACE] "Epoller: no active events" - ../Epoller.cpp(poll):42 
+2020-09-20 21:39:58.590789 31752 [TRACE] "Epoller: fd total count 1000" - ../Epoller.cpp(poll):26 
+2020-09-20 21:41:03.281750 31751 [TRACE] "Epoller: 1 events available" - ../Epoller.cpp(poll):37 
+2020-09-20 21:41:03.281817 31751 [TRACE] "Channel: event = {5: IN }" - ../Channel.cpp(handleEvent):24 
+2020-09-20 21:41:03.281863 31751 [TRACE] "Acceptor: connection from 49.78.135.29, port 3227" - ../Acceptor.cpp(onRead):130 
+2020-09-20 21:41:03.281893 31751 [TRACE] "Server: new Conn added into loop 0x7f50cc000b28" - ../Server.cpp(newConnection):50 
+2020-09-20 21:41:03.281917 31751 [TRACE] "Epoller: epoll_ctl op=ADD event={16: ET IN PRI }" - ../Epoller.cpp(update):105 
+2020-09-20 21:41:03.281928 31751 [TRACE] "Epoller: fd total count 1000" - ../Epoller.cpp(poll):26 
+2020-09-20 21:41:03.281935 31751 [TRACE] "Epoller: 1 events available" - ../Epoller.cpp(poll):37 
+2020-09-20 21:41:03.281940 31751 [TRACE] "Channel: event = {4: IN }" - ../Channel.cpp(handleEvent):24 
+2020-09-20 21:41:03.281946 31751 [TRACE] "Epoller: fd total count 1000" - ../Epoller.cpp(poll):26 
+2020-09-20 21:41:37.402171 31752 [TRACE] "Epoller: 1 events available" - ../Epoller.cpp(poll):37 
+2020-09-20 21:41:37.402403 31752 [TRACE] "Channel: event = {16: IN }" - ../Channel.cpp(handleEvent):24 
+2020-09-20 21:41:37.402424 31752 [TRACE] "Connection: message from fd=16 "prikntasfklaqw"" - ../Connection.cpp(handleRead):34 
+2020-09-20 21:41:37.402450 31752 [TRACE] "Connection: conn closed with fd=16" - ../Connection.cpp(close):42 
+2020-09-20 21:41:37.402469 31752 [TRACE] "Epoller: epoll_ctl op=DEL event={16: }" - ../Epoller.cpp(update):105 
+2020-09-20 21:41:37.402491 31752 [TRACE] "Connection: close fd=16" - ../Connection.cpp(~Connection):16 
+2020-09-20 21:41:37.402520 31752 [TRACE] "Epoller: fd total count 1000" - ../Epoller.cpp(poll):26 
+2020-09-20 21:41:38.689485 31755 [TRACE] "Epoller: no active events" - ../Epoller.cpp(poll):42 
+2020-09-20 21:41:38.689543 31755 [TRACE] "Epoller: fd total count 1000" - ../Epoller.cpp(poll):26 
+2020-09-20 21:41:38.689563 31754 [TRACE] "Epoller: no active events" - ../Epoller.cpp(poll):42 
+2020-09-20 21:41:38.689573 31754 [TRACE] "Epoller: fd total count 1000" - ../Epoller.cpp(poll):26 
+2020-09-20 21:41:38.689587 31753 [TRACE] "Epoller: no active events" - ../Epoller.cpp(poll):42 
+2020-09-20 21:41:38.689596 31753 [TRACE] "Epoller: fd total count 1000" - ../Epoller.cpp(poll):26 
+2020-09-20 21:42:43.373094 31751 [TRACE] "Epoller: no active events" - ../Epoller.cpp(poll):42 
+2020-09-20 21:42:43.373142 31751 [TRACE] "Epoller: fd total count 1000" - ../Epoller.cpp(poll):26 
+2020-09-20 21:42:50.348903 31751 [TRACE] "Epoller: 1 events available" - ../Epoller.cpp(poll):37 
+2020-09-20 21:42:50.348959 31751 [TRACE] "Channel: event = {5: IN }" - ../Channel.cpp(handleEvent):24 
+2020-09-20 21:42:50.348984 31751 [TRACE] "Acceptor: connection from 49.78.135.29, port 3232" - ../Acceptor.cpp(onRead):130 
+2020-09-20 21:42:50.349006 31751 [TRACE] "Server: new Conn added into loop 0x7f50cc003d48" - ../Server.cpp(newConnection):50 
+2020-09-20 21:42:50.349029 31751 [TRACE] "Epoller: epoll_ctl op=ADD event={16: ET IN PRI }" - ../Epoller.cpp(update):105 
+2020-09-20 21:42:50.349039 31751 [TRACE] "Epoller: fd total count 1000" - ../Epoller.cpp(poll):26 
+2020-09-20 21:42:50.349045 31751 [TRACE] "Epoller: 1 events available" - ../Epoller.cpp(poll):37 
+2020-09-20 21:42:50.349050 31751 [TRACE] "Channel: event = {4: IN }" - ../Channel.cpp(handleEvent):24 
+2020-09-20 21:42:50.349056 31751 [TRACE] "Epoller: fd total count 1000" - ../Epoller.cpp(poll):26 
+2020-09-20 21:42:52.595217 31753 [TRACE] "Epoller: 1 events available" - ../Epoller.cpp(poll):37 
+2020-09-20 21:42:52.595310 31753 [TRACE] "Channel: event = {16: IN }" - ../Channel.cpp(handleEvent):24 
+2020-09-20 21:42:52.595329 31753 [TRACE] "Connection: message from fd=16 "ÿôÿ"" - ../Connection.cpp(handleRead):34 
+2020-09-20 21:42:52.595359 31753 [TRACE] "Connection: conn closed with fd=16" - ../Connection.cpp(close):42 
+2020-09-20 21:42:52.595369 31753 [TRACE] "Epoller: epoll_ctl op=DEL event={16: }" - ../Epoller.cpp(update):105 
+2020-09-20 21:42:52.595393 31753 [TRACE] "Connection: close fd=16" - ../Connection.cpp(~Connection):16 
+2020-09-20 21:42:52.595421 31753 [TRACE] "Epoller: fd total count 1000" - ../Epoller.cpp(poll):26 
+2020-09-20 21:43:17.500369 31752 [TRACE] "Epoller: no active events" - ../Epoller.cpp(poll):42 
+2020-09-20 21:43:17.500427 31752 [TRACE] "Epoller: fd total count 1000" - ../Epoller.cpp(poll):26 
+2020-09-20 21:43:18.784393 31755 [TRACE] "Epoller: no active events" - ../Epoller.cpp(poll):42 
+2020-09-20 21:43:18.784444 31755 [TRACE] "Epoller: fd total count 1000" - ../Epoller.cpp(poll):26 
+2020-09-20 21:43:18.784474 31754 [TRACE] "Epoller: no active events" - ../Epoller.cpp(poll):42 
+2020-09-20 21:43:18.784482 31754 [TRACE] "Epoller: fd total count 1000" - ../Epoller.cpp(poll):26 
+2020-09-20 21:44:05.863687 31751 [TRACE] "Epoller: 1 events available" - ../Epoller.cpp(poll):37 
+2020-09-20 21:44:05.863745 31751 [TRACE] "Channel: event = {5: IN }" - ../Channel.cpp(handleEvent):24 
+2020-09-20 21:44:05.863769 31751 [TRACE] "Acceptor: connection from 49.78.135.29, port 3030" - ../Acceptor.cpp(onRead):130 
+2020-09-20 21:44:05.863791 31751 [TRACE] "Server: new Conn added into loop 0x7f50cc006f48" - ../Server.cpp(newConnection):50 
+2020-09-20 21:44:05.863814 31751 [TRACE] "Epoller: epoll_ctl op=ADD event={16: ET IN PRI }" - ../Epoller.cpp(update):105 
+2020-09-20 21:44:05.863823 31751 [TRACE] "Epoller: fd total count 1000" - ../Epoller.cpp(poll):26 
+2020-09-20 21:44:05.863829 31751 [TRACE] "Epoller: 1 events available" - ../Epoller.cpp(poll):37 
+2020-09-20 21:44:05.863834 31751 [TRACE] "Channel: event = {4: IN }" - ../Channel.cpp(handleEvent):24 
+2020-09-20 21:44:05.863840 31751 [TRACE] "Epoller: fd total count 1000" - ../Epoller.cpp(poll):26 
+2020-09-20 21:44:07.415374 31754 [TRACE] "Epoller: 1 events available" - ../Epoller.cpp(poll):37 
+2020-09-20 21:44:07.415440 31754 [TRACE] "Channel: event = {16: IN }" - ../Channel.cpp(handleEvent):24 
+2020-09-20 21:44:07.415471 31754 [TRACE] "Connection: message from fd=16 "wieuhfiuwhuihqweuidhuiwhiuefhwe"" - ../Connection.cpp(handleRead):34 
+2020-09-20 21:44:07.415500 31754 [TRACE] "Connection: conn closed with fd=16" - ../Connection.cpp(close):42 
+2020-09-20 21:44:07.415511 31754 [TRACE] "Epoller: epoll_ctl op=DEL event={16: }" - ../Epoller.cpp(update):105 
+2020-09-20 21:44:07.415535 31754 [TRACE] "Connection: close fd=16" - ../Connection.cpp(~Connection):16 
+2020-09-20 21:44:07.415565 31754 [TRACE] "Epoller: fd total count 1000" - ../Epoller.cpp(poll):26 
+2020-09-20 21:44:32.689942 31753 [TRACE] "Epoller: no active events" - ../Epoller.cpp(poll):42 
+2020-09-20 21:44:32.689990 31753 [TRACE] "Epoller: fd total count 1000" - ../Epoller.cpp(poll):26 
+2020-09-20 21:44:57.590099 31752 [TRACE] "Epoller: no active events" - ../Epoller.cpp(poll):42 
+2020-09-20 21:44:57.590148 31752 [TRACE] "Epoller: fd total count 1000" - ../Epoller.cpp(poll):26 
+2020-09-20 21:44:58.882222 31755 [TRACE] "Epoller: no active events" - ../Epoller.cpp(poll):42 
+2020-09-20 21:44:58.882264 31755 [TRACE] "Epoller: fd total count 1000" - ../Epoller.cpp(poll):26 

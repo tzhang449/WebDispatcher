@@ -13,6 +13,8 @@ public:
     Connection(Eventloop *loop, int fd);
     ~Connection();
 
+    void init();
+
 private:
     void handleRead();
     void close();

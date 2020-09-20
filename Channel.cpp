@@ -82,6 +82,14 @@ void Channel::disableAll()
     update();
 }
 
+void Channel::removeAllCb()
+{
+    readCb_ = nullptr;
+    writeCb_ = nullptr;
+    closeCb_ = nullptr;
+    ErrCb_ = nullptr;
+}
+
 int Channel::index()
 {
     return index_;

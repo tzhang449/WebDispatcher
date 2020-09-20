@@ -25,6 +25,7 @@ void ThreadPool::start()
     {
         auto t = std::make_unique<LoopThread>();
         loops_.push_back(t->getLoop());
+        t->start();
         threads_.push_back(std::move(t));
     }
 }
