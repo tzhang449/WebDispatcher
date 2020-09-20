@@ -16,11 +16,16 @@ Eventloop_test:Eventloop_test.o Eventloop.o Channel.o Epoller.o Logger.o
 Acceptor_test:Acceptor_test.o Eventloop.o Channel.o Epoller.o Acceptor.o Logger.o
 	$(CC) $(CFLAGS)  $^ -o $@ -I..
 	rm *.o
+
+Server_test:Server_test.o Eventloop.o Channel.o Epoller.o Acceptor.o Logger.o LoopThread.o ThreadPool.o Server.o Connection.o
+	$(CC) $(CFLAGS)  $^ -o $@ -I..
+	rm *.o
+
 .PHONY: clean 
 .PHONY: cleanlog
 
 clean:
-	rm Logger_test Eventloop_test *.o *.log
+	rm Logger_test Eventloop_test Acceptor_test Server_test *.o *.log
 
 cleanlog:
 	rm *.log

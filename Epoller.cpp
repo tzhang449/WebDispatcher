@@ -49,8 +49,8 @@ void Epoller::poll(int timeoutMs, ChannelList *active)
         }
     }
 }
-
 void Epoller::updateChannel(Channel *channel)
+
 {
     LOG_TRACE("Epoller: event={%s} index=%d",
               channel->eventsToStr(channel->fd(), channel->events()).c_str(),

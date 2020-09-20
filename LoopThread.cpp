@@ -19,7 +19,7 @@ Eventloop *LoopThread::getLoop()
 void LoopThread::start()
 {
     looping_ = true;
-    thread_ = std::thread(&threadFunc, this);
+    thread_ = std::thread(&LoopThread::threadFunc, this);
 }
 
 void LoopThread::stop()

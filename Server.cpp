@@ -2,6 +2,7 @@
 
 #include "Server.h"
 #include "Logger.h"
+#include "Connection.h"
 
 using namespace std::placeholders;
 
@@ -21,7 +22,7 @@ void Server::start()
 {
     LOG_TRACE("%s", "Server: server starting");
     looping_ = true;
-    thread_ = std::thread(&threadFunc, this);
+    thread_ = std::thread(&Server::threadFunc, this);
 }
 
 void Server::stop()
@@ -44,5 +45,7 @@ void Server::threadFunc()
 
 void Server::newConnection(int connfd, struct sockaddr_in addr)
 {
-    Eventloop *nextLoop = pool_.getNext();
+    Eventloop *loop = pool_.getNext();
+    LOG_TRACE("Server: new Conn added into loop %p", loop);
+    auto guard = std::make_shared<Connection>(loop, connfd);
 }

@@ -32,6 +32,7 @@ public:
     void handleEvent();
 
     int index();
+
     void setIndex(int index);
 
     int fd();
@@ -54,7 +55,6 @@ private:
     int events_;
     int revents_;
     int index_;
-
     EventCb readCb_;
     EventCb writeCb_;
     EventCb closeCb_;
