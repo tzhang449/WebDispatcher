@@ -21,11 +21,16 @@ Server_test:Server_test.o Eventloop.o Channel.o Epoller.o Acceptor.o Logger.o Lo
 	$(CC) $(CFLAGS)  $^ -o $@ -I..
 	rm *.o
 
+Server_bench:Server_bench.o Eventloop.o Channel.o Epoller.o Acceptor.o Logger.o LoopThread.o ThreadPool.o Server.o Connection.o
+	$(CC) $(CFLAGS)  $^ -o $@ -I..
+
+
+
 .PHONY: clean 
 .PHONY: cleanlog
 
 clean:
-	rm Logger_test Eventloop_test Acceptor_test Server_test *.o *.log
+	rm Logger_test Eventloop_test Acceptor_test Server_test Server_bench *.o *.log
 
 cleanlog:
 	rm *.log

@@ -78,6 +78,7 @@ void Channel::enableWrite()
 
 void Channel::disableAll()
 {
+    LOG_TRACE("%s", "Channel: disableAll");
     events_ = NOEVENT;
     update();
 }
@@ -123,7 +124,20 @@ void Channel::update()
 std::string Channel::eventsToStr(int fd, int events)
 {
     std::stringstream oss;
-    oss << fd << ": ";
+    switch (index_)
+    {
+    case Epoller::NEW:
+        oss << "index: NEW ";
+        break;
+    case Epoller::ADDED:
+        oss << "index: ADDED ";
+        break;
+    case Epoller::DELETED:
+        oss << "index: DELETED ";
+        break;
+    }
+
+    oss << "fd:" << fd << ": ";
     if (events & EPOLLET)
         oss << "ET ";
     if (events & EPOLLIN)

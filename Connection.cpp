@@ -30,7 +30,7 @@ void Connection::handleRead()
     while ((len = ::read(fd_, buf, sizeof(buf))) > 0)
     {
         char message[100];
-        snprintf(message, len - 1, "%s", buf);
+        snprintf(message, len, "%s", buf);
         LOG_TRACE("Connection: message from fd=%d \"%s\"", fd_, message);
         ::write(fd_, buf, len);
     }

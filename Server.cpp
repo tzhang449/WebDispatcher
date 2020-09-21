@@ -49,5 +49,5 @@ void Server::newConnection(int connfd, struct sockaddr_in addr)
     Eventloop *loop = pool_.getNext();
     LOG_TRACE("Server: new Conn added into loop %p", loop);
     auto guard = std::make_shared<Connection>(loop, connfd);
-    loop_.runInLoop(std::bind(&Connection::init, guard));
+    loop->runInLoop(std::bind(&Connection::init, guard));
 }

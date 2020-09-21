@@ -50,7 +50,9 @@ void Epoller::poll(int timeoutMs, ChannelList *active)
     }
 }
 void Epoller::updateChannel(Channel *channel)
-{
+{   
+    
+    LOG_TRACE("Epoller: updateChannel event={%s}", channel->eventsToStr(channel->fd(), channel->events()).c_str());
     switch (channel->index())
     {
     case NEW:
@@ -107,11 +109,11 @@ void Epoller::update(int op, Channel *channel)
     {
         if (op == EPOLL_CTL_DEL)
         {
-            LOG_SYSERROR("Epoller: epoll_ctl op=%s fd=%d", opToStr(op), channel->fd());
+            LOG_SYSERROR("Epoller: epoll_ctl op=%s fd=%d error(%s)", opToStr(op), channel->fd(), strerror(errno));
         }
         else
         {
-            LOG_SYSFATAL("Epoller: epoll_ctl op=%s fd=%d", opToStr(op), channel->fd());
+            LOG_SYSFATAL("Epoller: epoll_ctl op=%s fd=%d error(%s)", opToStr(op), channel->fd(), strerror(errno));
         }
     }
 }

@@ -3,6 +3,8 @@
 
 #include <thread>
 #include <atomic>
+#include <mutex>
+#include <condition_variable>
 
 #include "Noncopyable.h"
 #include "Eventloop.h"
@@ -20,10 +22,11 @@ public:
 private:
     void threadFunc();
 
-    Eventloop loop_;
+    Eventloop *loop_;
     std::thread thread_;
     std::atomic<bool> looping_;
-
+    std::mutex mutex_;
+    std::condition_variable cond_;
 };
 
 #endif
