@@ -1,5 +1,5 @@
 # Reactor多线程Server
-参考muduo实现的多线程reactor，用于学习和测试
+参考muduo实现的多线程reactor，用于学习和测试  
 
 ## 模型：
 '''
@@ -53,5 +53,5 @@ Connection对象的生命期管理
 否则提前析构会造成UD
 
 ## To do:
-(1) add timer in Eventloop
-(2) http parser, respond to http requests.
+(1) add timer in Eventloop  
+(2) http parser, respond to http requests.  
