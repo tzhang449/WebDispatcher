@@ -48,10 +48,10 @@ Logger
 *    YYYY-MM-DD HH:MM:SS.MILISECOND tid [level] "Message" - file(func):line 
 
 ## 难点
-Connection对象的生命期管理
-这里采用了shared_ptr管理connection的生命期，Connection的Channel的回调函数bind了该shared_ptr，
-因此Connection在它的Channel的callback被销毁时析构。注意销毁时要用shared_from_this()保护Connection，
-否则提前析构会造成UD
+Connection对象的生命期管理  
+>这里采用了shared_ptr管理connection的生命期，Connection的Channel的回调函数bind了该shared_ptr，  
+>因此Connection在它的Channel的callback被销毁时析构。注意销毁时要用shared_from_this()保护Connection，  
+>否则提前析构会造成UD  
 
 ## To do:
 (1) add timer in Eventloop  
