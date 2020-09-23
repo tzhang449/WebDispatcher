@@ -19,7 +19,7 @@ int main()
 
     ::sleep(5);
 
-    const int numMessage = 100;
+    const int numMessage = 10;
     struct sockaddr_in addr;
     addr.sin_family = AF_INET;
     addr.sin_port = htons(1984);
@@ -36,8 +36,13 @@ int main()
         int val;
         ::read(fd, &val, sizeof(val));
 
+        if (i != val)
+        {
+            std::cout << "i=" << i << "val=" << val << std::endl;
+        }
         assert(i == val);
+        ::close(fd);
     }
     auto end = std::chrono::steady_clock::now();
-    std::cout << "QPS is:" << 1000000*(numMessage / static_cast<double>(std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count())) << std::endl;
+    std::cout << "QPS is:" << 1000000 * (numMessage / static_cast<double>(std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count())) << std::endl;
 }
