@@ -1,14 +1,14 @@
-## Reactor多线程Server
+# Reactor多线程Server
 参考muduo实现的多线程reactor，用于学习和测试
 
-# 模型：
+## 模型：
 main reactor -> thread pool -> sub reactor 1
                             -> sub reactor 2
                             ...
                             -> sub reactor n
 main reactor接受tcp连接，将新连接以round rubin方式加入线程池中的一个sub reactor，sub reactor负责处理该连接
 
-# 细节：
+## 细节：
 Eventloop  
     基于IO multiplexing的事件分发loop，作为各个reactor的核心部分
     使用eventfd实现了Eventloop的异步唤醒
@@ -44,12 +44,12 @@ Logger
     格式
     YYYY-MM-DD HH:MM:SS.MILISECOND tid [level] "Message" - file(func):line 
 
-# 难点
+## 难点
 Connection对象的生命期管理
 这里采用了shared_ptr管理connection的生命期，Connection的Channel的回调函数bind了该shared_ptr，
 因此Connection在它的Channel的callback被销毁时析构。注意销毁时要用shared_from_this()保护Connection，
 否则提前析构会造成UD
 
-# To do:
+## To do:
 (1) add timer in Eventloop
 (2) http parser, respond to http requests.
