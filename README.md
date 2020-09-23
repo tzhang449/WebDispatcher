@@ -2,12 +2,12 @@
 参考muduo实现的多线程reactor，用于学习和测试  
 
 ## 模型：
-'''
-main reactor -> thread pool -> sub reactor 1
-                          - -> sub reactor 2
-                          - ...
-                          - -> sub reactor n
-'''
+
+> main reactor -> thread pool -> sub reactor 1
+>>                          - -> sub reactor 2
+>>                          - ...
+>>                          - -> sub reactor n
+
 main reactor接受tcp连接，将新连接以round rubin方式加入线程池中的一个sub reactor，sub reactor负责处理该连接
 
 ## 细节：
